@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+  rabbitmq:
+    container_name: stackoverflow_sb3_observability_rabbitmq
+    image: "rabbitmq:3.8-management"
+    ports:
+      - 5671:5671
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: pass
+      RABBITMQ_DEFAULT_VHOST: vhost
+

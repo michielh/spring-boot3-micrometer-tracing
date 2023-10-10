@@ -1,0 +1,29 @@
+spring:
+  rabbitmq:
+    username: user
+    password: pass
+    virtualHost: vhost
+    addresses: 'localhost:5672'
+
+  cloud:
+    function:
+      definition: 'some-consumer;'
+    stream:
+      default:
+        contentType: application/json
+      bindings:
+        some-consumer-in-0:
+          destination: some.destination
+          group: some-group
+
+      rabbit:
+        bindings:
+          some-consumer-in-0:
+            consumer:
+              autoBindDlq: true
+              bindingRoutingKey: someKey
+
+management:
+  tracing:
+    propagation:
+      type: B3
